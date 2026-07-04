@@ -1,0 +1,472 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Food Crave | Fast Food, Epic Taste</title>
+    <style>
+        /* Base Reset & Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff4757;
+            --primary-hover: #e84118;
+            --secondary: #ffa502;
+            --dark: #2f3542;
+            --light: #f1f2f6;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            background-color: #fafafa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-btn {
+            background-color: var(--primary);
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: background 0.3s !important;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(47, 53, 66, 0.85), rgba(47, 53, 66, 0.85)), url('https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: var(--light);
+        }
+
+        .hero .btn {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 30px;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(255, 165, 2, 0.4);
+            transition: transform 0.2s, background 0.3s;
+            display: inline-block;
+        }
+
+        .hero .btn:hover {
+            transform: translateY(-2px);
+            background-color: #e09202;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background-color: var(--secondary);
+            color: var(--dark);
+            text-align: center;
+            padding: 15px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .menu-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .menu-desc {
+            color: #747d8c;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .order-item-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .order-item-btn:hover {
+            background-color: var(--primary);
+        }
+
+        /* Features Section */
+        .features-bg {
+            background-color: var(--light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-box {
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .feature-box p {
+            color: #57606f;
+        }
+
+        /* Contact & Info Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .info-col h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .info-col p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">The Food <span>Crave</span></a>
+            <ul class="nav-links">
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#visit">Find Us</a></li>
+                <li><a href="#visit" class="cta-btn">Order Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        🔥 Flash Deal: Get the Ultimate Combo (Burger + Fries + Drink) for just $7.99!
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Fast Food. Epic Taste. Zero Waiting.</h1>
+        <p>Freshly grilled, packed with flavor, and served hot in under 7 minutes.</p>
+        <a href="#menu" class="btn">Explore Our Menu</a>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="container">
+        <h2 class="section-title">Our Star Items</h2>
+        <div class="menu-grid">
+            
+            <!-- Item 1 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80" alt="Cheesy Crunch Burger" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-title-row">
+                        <span class="menu-item-name">Cheesy Crunch Burger</span>
+                        <span class="menu-item-price">$4.99</span>
+                    </div>
+                    <p class="menu-desc">Crispy patty layered with melted real cheddar, fresh crunchy lettuce, and our legendary signature sauce.</p>
+                    <a href="#visit" class="order-item-btn">Order for Pickup</a>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=80" alt="Loaded Volcano Fries" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-title-row">
+                        <span class="menu-item-name">Loaded Volcano Fries</span>
+                        <span class="menu-item-price">$5.49</span>
+                    </div>
+                    <p class="menu-desc">Golden skin-on French fries smothered in warm cheese sauce, diced jalapenos, and crisp grilled onions.</p>
+                    <a href="#visit" class="order-item-btn">Order for Pickup</a>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1626700051175-6518c4793f4f?auto=format&fit=crop&w=500&q=80" alt="BBQ Grilled Wrap" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-title-row">
+                        <span class="menu-item-name">BBQ Grilled Wrap</span>
+                        <span class="menu-item-price">$5.99</span>
+                    </div>
+                    <p class="menu-desc">Flame-grilled protein, smoky barbecue sauce, and a crunch of fresh veggies wrapped tightly in a toasted tortilla.</p>
+                    <a href="#visit" class="order-item-btn">Order for Pickup</a>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=500&q=80" alt="Monster Thick Shake" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-title-row">
+                        <span class="menu-item-name">Monster Thick Shake</span>
+                        <span class="menu-item-price">$4.49</span>
+                    </div>
+                    <p class="menu-desc">Ultra-creamy artisanal shake blended with premium chocolate syrup, topped with rich whipped cream.</p>
+                    <a href="#visit" class="order-item-btn">Order for Pickup</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="features-bg">
+        <div class="container">
+            <h2 class="section-title">Why We Are The Best In Town</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Freshly Fired</h3>
+                    <p>We never pre-cook. Your food only hits the flat top or grill the exact moment you place your order.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🧀</div>
+                    <h3>Top Tier Ingredients</h3>
+                    <p>From crisp, locally sourced produce to premium grade cheeses—quality is never compromised.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Hungry? We get it. Expect your meal packaged up and ready in your hand in under 7 minutes flat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Info Section -->
+    <section id="visit" class="container">
+        <div class="info-grid">
+            <div class="info-col">
+                <h3>Find Our Stall</h3>
+                <p><strong>Stall No. 14</strong>, Downtown Street Food Court</p>
+                <p>(Directly opposite Central Park Main Gate)</p>
+                <p style="margin-top: 15px; color: #747d8c;">Available on: UberEats, DoorDash, and Grubhub.</p>
+            </div>
+            <div class="info-col">
+                <h3>Opening Hours</h3>
+                <p><strong>Monday - Sunday:</strong> 4:00 PM – 11:30 PM</p>
+                <p><em>Open every single day to crush your late-night cravings!</em></p>
+            </div>
+            <div class="info-col">
+                <h3>Get In Touch</h3>
+                <p><strong>Call for Quick Pickup:</strong> +1 (555) 019-2831</p>
+                <p><strong>Follow Us:</strong></p>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">TikTok</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 The Food Crave Stall. All Rights Reserved. Fully Vegetarian & Non-Veg custom options available at the counter.
+    </footer>
+
+</body>
+</html>
